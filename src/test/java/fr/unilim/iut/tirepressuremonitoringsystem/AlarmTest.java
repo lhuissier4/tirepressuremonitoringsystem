@@ -13,7 +13,7 @@ class AlarmTest {
 	void alarm_On_when_value_too_low() {
 		Sensor sensor = probeValue(1.0);
 
-		Alarm alarm = new Alarm(sensor);
+		Alarm alarm = new Alarm(sensor, new SafetyRange(17,21));
 		alarm.check();
 
 		assertTrue(alarm.isAlarmOn());
@@ -23,7 +23,7 @@ class AlarmTest {
 	void alarm_On_when_value_too_high() {
 		Sensor sensor = probeValue(150.0);
 	
-		Alarm alarm = new Alarm(sensor);
+		Alarm alarm = new Alarm(sensor, new SafetyRange(17,21));
 		alarm.check();
 	
 		assertTrue(alarm.isAlarmOn());
@@ -33,7 +33,7 @@ class AlarmTest {
 	void alarm_Off_when_value_safe() {
 		Sensor sensor = probeValue(20.0);
 	
-		Alarm alarm = new Alarm(sensor);
+		Alarm alarm = new Alarm(sensor, new SafetyRange(17,21));
 		alarm.check();
 	
 		assertFalse(alarm.isAlarmOn());
@@ -43,7 +43,7 @@ class AlarmTest {
 	void alarm_once_on_stays_on_everytime() {
 		Sensor sensor = probeValue(10.0,19.0);
 	
-		Alarm alarm = new Alarm(sensor);
+		Alarm alarm = new Alarm(sensor, new SafetyRange(17,21));
 		alarm.check();
 		assertTrue(alarm.isAlarmOn());
 		

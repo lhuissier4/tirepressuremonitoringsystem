@@ -2,20 +2,23 @@ package fr.unilim.iut.tirepressuremonitoringsystem;
 
 public class Alarm
 {
-    private final double lowThreshold = 17;
-    private final double highThreshold = 21;
+
 
     private Sensor sensor;
     private boolean alarmOn;
-
-    public Alarm(Sensor sensor) {
+    
+    private SafetyRange safetyRange;
+    public Alarm() {
+    	this(new PressureSensor(), new SafetyRange(17,21));
+    	
+       }
+    public Alarm(Sensor sensor, SafetyRange safetyRange) {
 		this.sensor=sensor;
 		this.alarmOn = false;
+		this.safetyRange = safetyRange;
+
 	}
     
-    public Alarm() {
-    	this(new PressureSensor());
-       }
 
 	public void check()
     {
@@ -36,7 +39,7 @@ public class Alarm
 	}
 
 	private boolean isNotSafe(double value) {
-		return value < lowThreshold || highThreshold < value;
+		return safetyRange.doesNotContain(value);
 	}
 
     public boolean isAlarmOn()
