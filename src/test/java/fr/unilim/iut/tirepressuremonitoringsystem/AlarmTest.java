@@ -13,7 +13,9 @@ class AlarmTest {
 	void alarm_On_when_value_too_low() {
 		Sensor sensor = probeValue(1.0);
 
-		Alarm alarm = new Alarm(sensor, new SafetyRange(17,21));
+		Alarm alarm = new AlarmBuilder().withSensor(sensor)
+				.withSafetyRange(new SafetyRange(17,21))
+				.build();
 		alarm.check();
 
 		assertTrue(alarm.isAlarmOn());
