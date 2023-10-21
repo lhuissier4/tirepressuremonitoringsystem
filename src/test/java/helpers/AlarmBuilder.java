@@ -1,18 +1,27 @@
 package helpers;
 
 import fr.unilim.iut.tirepressuremonitoringsystem.Alarm;
+import fr.unilim.iut.tirepressuremonitoringsystem.SafetyRange;
 import fr.unilim.iut.tirepressuremonitoringsystem.Sensor;
 
 public class AlarmBuilder {
-	public boolean withSafetyRange(){
-		return false;
+	private SafetyRange mySafetyRange;
+	private Sensor mySensor;
+
+	public AlarmBuilder withSafetyRange(SafetyRange safetyRange ){
+		this.mySafetyRange=safetyRange;
+		return this;
+		
 	}
-	public boolean withSensor(Sensor sensor) {
-		return false;
+	public AlarmBuilder withSensor(Sensor sensor) {
+		this.mySensor=sensor;
+		return this;
 		
 	}
 	public Alarm build() {
-		return null;
-		
+		return new Alarm(mySensor,mySafetyRange);
+	
 	}
 }
+
+
