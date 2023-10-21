@@ -7,6 +7,8 @@ import static org.mockito.Mockito.when;
 
 import org.junit.jupiter.api.Test;
 
+import helpers.AlarmBuilder;
+
 class AlarmTest {
 
 	@Test
