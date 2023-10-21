@@ -7,6 +7,7 @@ import fr.unilim.iut.tirepressuremonitoringsystem.Sensor;
 public class AlarmBuilder {
 	private SafetyRange mySafetyRange;
 	private Sensor mySensor;
+	
 
 	public AlarmBuilder withSafetyRange(SafetyRange safetyRange ){
 		this.mySafetyRange=safetyRange;
@@ -21,6 +22,9 @@ public class AlarmBuilder {
 	public Alarm build() {
 		return new Alarm(mySensor,mySafetyRange);
 	
+	}
+	public static AlarmBuilder anAlarm() {
+		return new AlarmBuilder();
 	}
 }
 

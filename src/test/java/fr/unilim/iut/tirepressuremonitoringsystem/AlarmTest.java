@@ -6,8 +6,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 import org.junit.jupiter.api.Test;
-
-import helpers.AlarmBuilder;
+import static helpers.AlarmBuilder.anAlarm;
 
 class AlarmTest {
 
@@ -15,7 +14,7 @@ class AlarmTest {
 	void alarm_On_when_value_too_low() {
 		Sensor sensor = probeValue(1.0);
 
-		Alarm alarm = new AlarmBuilder()
+		Alarm alarm = anAlarm()
 				.withSensor(sensor)
 				.withSafetyRange(new SafetyRange(17,21))
 				.build();
